@@ -6,15 +6,14 @@
 
 <title>Portfolio</title>
 
-
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
 <style>
 
+/* ================= RESET ================= */
 
 *{
   margin:0;
@@ -23,6 +22,11 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
   font-family: Arial, sans-serif;
 }
 
+html,body{
+  overflow-x:hidden;
+}
+
+/* ================= BACKGROUND ================= */
 
 .video-bg{
   position:fixed;
@@ -33,7 +37,6 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
   object-fit:cover;
   z-index:-2;
 }
-
 
 .blur-layer{
   position:fixed;
@@ -46,6 +49,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
   z-index:-1;
 }
 
+/* ================= NAVBAR ================= */
 
 .navbar{
   position:fixed;
@@ -65,7 +69,6 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
   color:#ddd;
 }
 
-
 .nav-links{
   display:flex;
   list-style:none;
@@ -78,11 +81,9 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
   font-size:x-large;
 }
 
-
 #menu-toggle{
   display:none;
 }
-
 
 .menu-icon{
   display:none;
@@ -91,6 +92,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
   cursor:pointer;
 }
 
+/* ================= HOME ================= */
 
 .profile-img{
   width:500px;
@@ -108,27 +110,20 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
   object-fit:cover;
 }
 
-
+/* ================= SKILLS ================= */
 
 .skills-title{
-  margin-top: 180px;
+  margin-top:180px;
   color:white;
   font-size:48px;
   font-weight:bold;
-  ;
 }
 
 .skills-title span{
   color:#14B8A6;
 }
 
-@media(max-width:768px){
-  .skills-title{
-    font-size:32px;
-    margin-top:25px;
-  }
-}
-
+/* ================= MOBILE MENU ================= */
 
 @media(max-width:768px){
 
@@ -152,205 +147,175 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     display:flex;
   }
 
-  .nav-links li{
-    margin:15px 0;
-  }
-
   .profile-img{
     width:250px;
     height:250px;
     margin-top:30px;
   }
 
+  .skills-title{
+    font-size:32px;
+    margin-top:25px;
+  }
+
 }
 
-   .banner{
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            position: relative;
-            background-color: black; 
-        }
+/* ================= 3D SLIDER ================= */
 
-        
-        .slider{
-            position: relative;
-            width: 200px;
-            height: 250px;
-            transform-style: preserve-3d;
-            transform: perspective(1000px);
-            animation: autoRun 10s linear infinite;
-        }
+.banner{
+  width:100%;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+  position:relative;
+  background:black;
+}
 
-         .services{
-      padding:80px 0;
-    }
+.slider{
+  position:relative;
+  width:200px;
+  height:250px;
+  transform-style:preserve-3d;
+  transform:perspective(1000px);
+  animation:autoRun 10s linear infinite;
+}
 
-    .services h2{
-      text-align:center;
-      margin-bottom:50px;
-      font-weight:bold;
-      font-size:40px;
-    }
+@keyframes autoRun{
+  from{ transform:perspective(1000px) rotateY(0deg); }
+  to{ transform:perspective(1000px) rotateY(360deg); }
+}
 
-    .services span{
-      color:#00f7ff;
-    }
+.slider .item{
+  position:absolute;
+  inset:0;
+  transform:
+  rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+  translateZ(550px);
+}
 
+.slider .item img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  border-radius:10px;
+  background:white;
+}
 
-    .service-card{
-      background: linear-gradient(145deg, #063b2b, #0b5f44);
-      border-radius:15px;
-      padding:30px 25px;
-      text-align:center;
-      height:100%;
-      box-shadow: 
-        0 0 15px rgba(0, 255, 157, 0.3),
-        0 0 30px rgba(0, 255, 157, 0.15);
-      transition:0.4s;
-    }
+/* ================= SERVICES ================= */
 
-    .service-card:hover{
-      transform:translateY(-8px);
-      box-shadow:0 0 35px rgba(0,247,255,0.6);
-    }
+.services{
+  padding:80px 0;
+}
 
-    .service-card h1{
-      color:#00f7ff;
-      font-weight:bold;
-      margin-bottom:15px;
-    }
+.services h2{
+  text-align:center;
+  margin-bottom:50px;
+  font-weight:bold;
+  font-size:40px;
+}
 
-    .service-card p{
-      font-size:16px;
-      line-height:1.6;
-      color:#ddd;
-    }
+.services span{
+  color:#00f7ff;
+}
 
+.service-card{
+  background:linear-gradient(145deg,#063b2b,#0b5f44);
+  border-radius:15px;
+  padding:30px 25px;
+  text-align:center;
+  height:100%;
+  box-shadow:
+  0 0 15px rgba(0,255,157,0.3),
+  0 0 30px rgba(0,255,157,0.15);
+  transition:0.4s;
+}
 
-     .contact-section{
-      padding:80px 0; 
-    }
+.service-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 0 35px rgba(0,247,255,0.6);
+}
 
-      .contact-title{
-      font-size:48px;
-      font-weight:bold;
-    }
+.service-card h1{
+  color:#00f7ff;
+  font-weight:bold;
+}
 
-    .contact-title span{
-      color:#00f7ff;
-    }
+.service-card p{
+  color:#ddd;
+}
 
-    .contact-text{
-      color:#ccc;
-      margin:20px 0;
-      line-height:1.7;
-    }
+/* ================= CONTACT ================= */
 
-    .social-icons i{
-      font-size:30px;
-      color:#00f7ff;
-      margin-right:20px;
-      transition:0.3s;
-      cursor:pointer;
-    }
+.contact-section{
+  padding:80px 0;
+}
 
-    .social-icons i:hover{
-      color:#fff;
-      transform:scale(1.1);
-    }
+.contact-title{
+  font-size:48px;
+  font-weight:bold;
+}
 
-    .contact-form{
+.contact-title span{
+  color:#00f7ff;
+}
 
-      padding:80px;
-      border-radius:10px;
-      color:#000;
-    }
+.contact-text{
+  color:#ccc;
+  margin:20px 0;
+  line-height:1.7;
+}
 
-    .contact-form h4{
-      text-align:center;
-      font-weight:bold;
-      margin-bottom:20px;
-      position:relative;
-    }
+.social-icons i{
+  font-size:30px;
+  color:#00f7ff;
+  margin:10px;
+  transition:0.3s;
+  cursor:pointer;
+}
 
-    .contact-form h4::after{
-      content:"";
-      width:50px;
-      height:3px;
-      background:#ff0066;
-      display:block;
-      margin:8px auto 0;
-      border-radius:5px;
-    }
+.social-icons i:hover{
+  color:#fff;
+  transform:scale(1.1);
+}
 
-    .form-control{
-      border-radius:0;
-      padding:12px;
-      margin-bottom:15px;
-      border:1px solid #ccc;
-    }
+.contact-form{
+  padding:40px;
+  border-radius:10px;
+}
 
-    .form-control:focus{
-      box-shadow:none;
-      border-color:#00f7ff;
-    }
+.form-control{
+  border-radius:0;
+  padding:12px;
+  margin-bottom:15px;
+}
 
-    .btn-send{
-      background:#ff0033;
-      color:#fff;
-      padding:10px 25px;
-      border:none;
-      float:right;
-    }
+.btn-send{
+  background:#ff0033;
+  color:white;
+  padding:10px 25px;
+  border:none;
+}
 
-    .btn-send:hover{
-      background:#cc0029;
-    }
-
-        @keyframes autoRun {
-            from {
-                transform: perspective(1000px) rotateY(0deg);
-            }
-            to {
-                transform: perspective(1000px)  rotateY(360deg);
-            }
-        }
-
-
-        .slider .item{
-            position: absolute;
-            inset: 0;
-            transform:
-                rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg))
-                translateZ(550px);
-        }
-
-
-        .slider .item img{
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            border-radius: 10px;
-            background: white; 
-            
-        }
-
-
+.btn-send:hover{
+  background:#cc0029;
+}
 
 </style>
 </head>
 
 <body>
 
+<!-- ================= VIDEO ================= -->
+
 <video class="video-bg" autoplay muted loop>
   <source src="background video.mp4" type="video/mp4">
 </video>
 
 <div class="blur-layer"></div>
+
+<!-- ================= NAVBAR ================= -->
 
 <nav class="navbar d-flex justify-content-between align-items-center">
 
@@ -371,48 +336,44 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
 
 </nav>
 
+<!-- ================= HOME ================= -->
 
-<section id="Home" class="container min-vh-100 d-flex align-items-center">
+<section id="Home" class="container min-vh-100 d-flex align-items-center pt-5">
 
   <div class="row w-100 align-items-center text-center text-md-start">
 
-   
-    <div class="col-md-6 mb-4 mb-md-0">
+    <div class="col-lg-6 col-md-12 mb-4">
 
-      <h2 style="color: #ddd; font-size: 50px;">Hi,</h2>
+      <h2 style="color:#ddd;font-size:50px;">Hi,</h2>
 
-      <h1 style="color: #ddd; font-size: 50px;">
+      <h1 style="color:#ddd;font-size:50px;">
         I'm <span style="color:#14B8A6;">Lokeshwaran S</span>
       </h1>
 
-      <h3 class="mb-4" style="color: white; font-size: 50px;">Java Full Stack Developer</h3>
+      <h3 style="color:white;font-size:50px;">
+        Java Full Stack Developer
+      </h3>
 
-      <div class="d-flex gap-4 justify-content-center justify-content-md-start flex-wrap">
+      <div class="d-flex gap-4 justify-content-center justify-content-md-start flex-wrap mt-3">
 
-        <a href="https://github.com/"
-           class="btn"
-           style="background:darkseagreen;color:white;padding:12px 28px;font-size:18px;">
-          Github
+        <a href="#" class="btn"
+        style="background:darkseagreen;color:white;padding:12px 28px;">
+        Github
         </a>
 
-        <a href="New resume .pdf"
-           download
-           class="btn"
-           style="background:crimson;color:white;padding:12px 28px;font-size:18px;">
-          Download CV
+        <a href="#" class="btn"
+        style="background:crimson;color:white;padding:12px 28px;">
+        Download CV
         </a>
 
       </div>
 
     </div>
 
-
-    <div class="col-md-6 text-center">
+    <div class="col-lg-6 col-md-12 text-center">
 
       <div class="profile-img">
-
-        <img src="profile.jpeg" alt="Profile">
-
+        <img src="profile.jpeg">
       </div>
 
     </div>
@@ -421,187 +382,130 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
 
 </section>
 
+<!-- ================= SKILLS ================= -->
 
-<div class="container-fluid p-0" id="Skills" >
+<section id="Skills" class="container-fluid p-0">
 
-  <div class="banner flex-column" >
+  <div class="banner flex-column">
 
-    <div class="slider" style="--quantity: 5">
+    <div class="slider" style="--quantity:5">
 
-      <div class="item" style="--position: 1">
-        <img src="html.png">
-      </div>
-
-      <div class="item" style="--position: 2">
-        <img src="css.png">
-      </div>
-
-      <div class="item" style="--position: 3">
-        <img src="javascript.png">
-      </div>
-
-      <div class="item" style="--position: 4">
-        <img src="java.png">
-      </div>
-
-      <div class="item" style="--position: 5">
-        <img src="sql.png">
-      </div>
+      <div class="item" style="--position:1"><img src="html.png"></div>
+      <div class="item" style="--position:2"><img src="css.png"></div>
+      <div class="item" style="--position:3"><img src="javascript.png"></div>
+      <div class="item" style="--position:4"><img src="java.png"></div>
+      <div class="item" style="--position:5"><img src="sql.png"></div>
 
     </div>
 
-    <h1 class="skills-title" >
+    <h1 class="skills-title text-center">
       Known <span>Programming</span> Languages
     </h1>
 
   </div>
 
+</section>
+
+<!-- ================= ABOUT ================= -->
+
+<section id="About" class="services bg-black">
+
+<div class="container">
+
+<h2 class="text-light">My <span>Qualifications</span></h2>
+
+<div class="row g-4 justify-content-center">
+
+<div class="col-lg-3 col-md-6 col-sm-12">
+<div class="service-card">
+<h1>SSLC</h1>
+<p>Infant Jesus School<br>2017-18<br><b>70%</b></p>
+</div>
 </div>
 
+<div class="col-lg-3 col-md-6 col-sm-12">
+<div class="service-card">
+<h1>HSC</h1>
+<p>Commerce<br>2019-20<br><b>64%</b></p>
+</div>
+</div>
 
-<div style=" background-color: #000; width: 100vw; height: 100%;" id="About">
-<section class="services">
+<div class="col-lg-3 col-md-6 col-sm-12">
+<div class="service-card">
+<h1>BCA</h1>
+<p>2020-23<br><b>69%</b></p>
+</div>
+</div>
 
-  <div class="container">
+<div class="col-lg-3 col-md-6 col-sm-12">
+<div class="service-card">
+<h1>Java</h1>
+<p>Login360<br>2026</p>
+</div>
+</div>
 
-    <h2 style=" color: #ddd;">My <span>Qualifications</span></h2>
+</div>
 
-    <div class="row g-4" style="margin: 110px;">
-
-      <div class="col-lg-3 col-md-6 col-sm-12">
-        <div class="service-card" >
-
-          <h1>SSLC</h1>
-
-          <p style="font-size: x-large;">
-            Infant Jesus Matriculation Higher Secondary School<br>
-            (2017 - 2018)<br>
-            <strong>70%</strong>
-          </p>
-
-        </div>
-      </div>
-
-
-      <div class="col-lg-3 col-md-6 col-sm-12">
-        <div class="service-card">
-
-          <h1>HSC</h1>
-
-          <p style="font-size: x-large;">
-            Commerce with Computer Application<br>
-            Infant Jesus Matriculation Higher Secondary School<br>
-            (2019 - 2020)<br>
-            <strong>64%</strong>
-          </p>
-
-        </div>
-      </div>
-
-
-      <div class="col-lg-3 col-md-6 col-sm-12">
-        <div class="service-card">
-
-          <h1>BCA</h1>
-
-          <p style="font-size: x-large;">
-            Mohammed Sathak College of Arts & Science<br>
-            (2020 - 2023)<br>
-            <strong>69%</strong>
-          </p>
-
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-6 col-sm-12">
-        <div class="service-card">
-
-          <h1>Java Full Stack</h1>
-
-          <p style="font-size: x-large;">
-            Completed at Login360<br>
-            (2026)
-          </p>
-
-        </div>
-      </div>
-
-    </div>
-
-  </div>
+</div>
 
 </section>
 
+<!-- ================= CONTACT ================= -->
+
+<section id="end-page" class="contact-section bg-black">
+
+<div class="container">
+
+<div class="row align-items-center">
+
+<div class="col-lg-6 col-md-12 text-center text-lg-start mb-5">
+
+<h1 class="contact-title">Contact <span>Me</span></h1>
+
+<h5>Let's Work Together</h5>
+
+<p class="contact-text">
+Lorem ipsum dolor sit amet consectetur adipisicing elit.
+</p>
+
+<div class="social-icons">
+<i class="fab fa-facebook-f"></i>
+<i class="fab fa-instagram"></i>
+<i class="fab fa-linkedin-in"></i>
+<i class="fab fa-twitter"></i>
 </div>
 
+</div>
 
-<div id="end-page" class="final-page" style="height: 100vh; width: 100vw; background-color: #000;">
-  <section class="contact-section">
+<div class="col-lg-6 col-md-12">
 
-  <div class="container">
+<div class="contact-form">
 
-    <div class="row align-items-center" style="padding-top: 100px;">
+<h4 class="text-light text-center">CONTACT</h4>
 
-      <div class="col-lg-6 col-md-12 mb-5">
+<form>
 
-        <h1 class="contact-title">
-          Contact <span>Me</span>
-        </h1>
+<input class="form-control w-100" placeholder="Name">
+<input class="form-control w-100" placeholder="Email">
+<input class="form-control w-100" placeholder="Phone">
 
-        <h5 class="mt-4" style="font-size: x-large;">Let's Work Together</h5>
+<textarea class="form-control w-100" rows="4"></textarea>
 
-        <p class="contact-text" style="font-size: xx-large;">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Quo eligendi quam incidunt. At doloremque saepe autem
-          magnam? Aut, corporis eveniet fuga inventore vel laboriosam
-          assumenda!
-        </p>
+<button class="btn btn-send mt-3 w-100">
+SEND
+</button>
 
-        <div class="social-icons mt-4">
+</form>
 
-          <i class="fab fa-facebook-f" style="font-size: 50px;"></i>
-          <i class="fab fa-instagram" style="font-size: 50px;" ></i>
-          <i class="fab fa-linkedin-in" style="font-size: 50px;"></i>
-          <i class="fab fa-twitter" style="font-size: 50px;"></i>
+</div>
 
-        </div>
+</div>
 
-      </div>
+</div>
 
-      <div class="col-lg-6 col-md-12">
-
-        <div class="contact-form">
-
-          <h4 style="color: white;">CONTACT</h4>
-
-          <form>
-
-            <input type="text" class="form-control" placeholder="Name" required style="width: 600px;">
-
-            <input type="email" class="form-control" placeholder="E-mail" required style="width: 600px;">
-
-            <input type="text" class="form-control" placeholder="Phone Number" style="width: 600px;">
-
-            <textarea class="form-control" rows="4" placeholder="Message" style="width: 600px;"></textarea>
-
-            <button type="submit" class="btn btn-send mt-3" style="padding: 20px; width: 150px;">
-              SEND
-            </button>
-
-          </form>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
+</div>
 
 </section>
-
-</div>
 
 </body>
 </html>
-
